@@ -190,7 +190,7 @@ RUN rpm-ostree override replace \
         glibc32 \
         || true
 
-# Install Valve's patched Mesa
+# Install Valve's patched Mesa & Pipewire
 # Install patched switcheroo control with proper discrete GPU support
 RUN rpm-ostree override remove \
         mesa-va-drivers-freeworld && \
@@ -205,6 +205,14 @@ RUN rpm-ostree override remove \
         mesa-libEGL \
         mesa-vulkan-drivers \
         mesa-libGL \
+        pipewire \
+        pipewire-alsa \
+        pipewire-gstreamer \
+        pipewire-jack-audio-connection-kit \
+        pipewire-jack-audio-connection-kit-libs \
+        pipewire-libs \
+        pipewire-pulseaudio \
+        pipewire-utils \
         xorg-x11-server-Xwayland && \
     rpm-ostree install \
         mesa-va-drivers-freeworld \
@@ -250,6 +258,7 @@ RUN rpm-ostree install \
         i2c-tools \
         joystickwake \
         hl2linux-selinux \
+        udica \
         joycond \
         ladspa-caps-plugins \
         ladspa-noise-suppression-for-voice \
@@ -641,6 +650,7 @@ RUN rpm-ostree install \
     galileo-mura \
     powerbuttond \
     hhd \
+    adjustor \
     vpower \
     ds-inhibit \
     steam_notif_daemon \
@@ -657,6 +667,8 @@ RUN rpm-ostree install \
     xorg-x11-server-Xvfb \
     python-vdf \
     python-crcmod && \
+    curl -L $(curl -s "https://api.github.com/repos/hhd-dev/hhd-ui/releases/latest" | grep "browser_download_url" | cut -d '"' -f 4) -o /usr/bin/hhd-ui && \
+    chmod +x /usr/bin/hhd-ui && \
     git clone https://gitlab.com/evlaV/jupiter-dock-updater-bin.git \
         --depth 1 \
         /tmp/jupiter-dock-updater-bin && \
@@ -687,18 +699,10 @@ RUN rpm-ostree install \
     rm -rf /tmp/linux-firmware-galileo && \
     rm -rf /usr/share/alsa/ucm2/conf.d/acp5x/Valve-Jupiter-1.conf
 
-# Install Steam Deck patched Pipewire, Wireplumber, Bluez & UPower
+# Install Steam Deck patched Wireplumber, Bluez & UPower
 RUN rpm-ostree override replace \
     --experimental \
     --from repo=copr:copr.fedorainfracloud.org:kylegospo:bazzite-multilib \
-        pipewire \
-        pipewire-alsa \
-        pipewire-gstreamer \
-        pipewire-jack-audio-connection-kit \
-        pipewire-jack-audio-connection-kit-libs \
-        pipewire-libs \
-        pipewire-pulseaudio \
-        pipewire-utils \
         bluez \
         bluez-cups \
         bluez-libs \
