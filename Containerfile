@@ -115,7 +115,6 @@ RUN sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/_copr_ublue-os-akmods.repo
     rpm-ostree install \
         /tmp/akmods-rpms/kmods/*kvmfr*.rpm \
         /tmp/akmods-rpms/kmods/*xone*.rpm \
-        /tmp/akmods-rpms/kmods/*xpadneo*.rpm \
         /tmp/akmods-rpms/kmods/*openrazer*.rpm \
         /tmp/akmods-rpms/kmods/*v4l2loopback*.rpm \
         /tmp/akmods-rpms/kmods/*wl*.rpm \
@@ -347,6 +346,7 @@ RUN rpm-ostree install \
         cockpit-system \
         cockpit-navigator \
         cockpit-storaged \
+        ydotool \
         lsb_release && \
     pip install --prefix=/usr topgrade && \
     rpm-ostree install \
@@ -427,9 +427,16 @@ RUN rpm-ostree install \
         vkBasalt.x86_64 \
         vkBasalt.i686 \
         obs-vkcapture.x86_64 \
+        libobs_vkcapture.x86_64 \
+        libobs_glcapture.x86_64 \
         obs-vkcapture.i686 \
+        libobs_vkcapture.i686 \
+        libobs_glcapture.i686 \
         mangohud.x86_64 \
         mangohud.i686 && \
+    ln -s wine32 /usr/bin/wine && \
+    ln -s wine32-preloader /usr/bin/wine-preloader && \
+    ln -s wineserver64 /usr/bin/wineserver && \
     if grep -q "kinoite" <<< "${BASE_IMAGE_NAME}"; then \
         rpm-ostree override remove \
             gamemode \
@@ -457,7 +464,8 @@ RUN rpm-ostree install \
 # Configure KDE & GNOME
 RUN if grep -q "kinoite" <<< "${BASE_IMAGE_NAME}"; then \
         rpm-ostree install \
-            qt && \
+            qt \
+            krdp && \
         rpm-ostree override remove \
             plasma-welcome && \
         rpm-ostree override replace \
@@ -478,6 +486,7 @@ RUN if grep -q "kinoite" <<< "${BASE_IMAGE_NAME}"; then \
             rom-properties-kf6 \
             joystickwake \
             fcitx5-mozc \
+            fcitx5-chinese-addons \
             ptyxis && \
         mkdir -p /tmp/kwin-system76-scheduler-integration && \
         curl -Lo /tmp/kwin-system76-scheduler-integration/archive.tar.gz https://github.com/maxiberta/kwin-system76-scheduler-integration/archive/refs/heads/main.tar.gz && \
@@ -503,9 +512,7 @@ RUN if grep -q "kinoite" <<< "${BASE_IMAGE_NAME}"; then \
         --from repo=copr:copr.fedorainfracloud.org:ublue-os:staging \
             mutter \
             mutter-common \
-            gnome-shell \
-            vte291 \
-            vte-profile && \
+            gnome-shell && \
         rpm-ostree install \
             ptyxis \
             nautilus-open-any-terminal \
@@ -576,6 +583,7 @@ RUN /usr/libexec/containerbuild/build-initramfs && \
     sed -i 's@\[Desktop Entry\]@\[Desktop Entry\]\nNoDisplay=true@g' /usr/share/applications/fish.desktop && \
     sed -i 's@\[Desktop Entry\]@\[Desktop Entry\]\nNoDisplay=true@g' /usr/share/applications/nvtop.desktop && \
     sed -i 's@\[Desktop Entry\]@\[Desktop Entry\]\nNoDisplay=true@g' /usr/share/applications/btop.desktop && \
+    sed -i 's/#UserspaceHID.*/UserspaceHID=true/' /usr/etc/bluetooth/input.conf && \
     rm -f /usr/share/vulkan/icd.d/lvp_icd.*.json && \
     mkdir -p "/usr/etc/profile.d/" && \
     ln -s "/usr/share/ublue-os/firstboot/launcher/login-profile.sh" \
