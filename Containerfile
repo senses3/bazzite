@@ -173,12 +173,6 @@ RUN rpm-ostree override replace \
     --from repo=updates \
         gstreamer1 \
         gstreamer1-plugins-base \
-        gstreamer1-plugins-bad-free-libs \
-        gstreamer1-plugins-good-qt \
-        gstreamer1-plugins-good \
-        gstreamer1-plugins-bad-free \
-        gstreamer1-plugin-libav \
-        gstreamer1-plugins-ugly-free \
         || true && \
     rpm-ostree override replace \
     --experimental \
@@ -583,7 +577,7 @@ RUN /usr/libexec/containerbuild/build-initramfs && \
     sed -i 's@\[Desktop Entry\]@\[Desktop Entry\]\nNoDisplay=true@g' /usr/share/applications/fish.desktop && \
     sed -i 's@\[Desktop Entry\]@\[Desktop Entry\]\nNoDisplay=true@g' /usr/share/applications/nvtop.desktop && \
     sed -i 's@\[Desktop Entry\]@\[Desktop Entry\]\nNoDisplay=true@g' /usr/share/applications/btop.desktop && \
-    sed -i 's/#UserspaceHID.*/UserspaceHID=true/' /usr/etc/bluetooth/input.conf && \
+    sed -i 's/#UserspaceHID.*/UserspaceHID=true/' /etc/bluetooth/input.conf && \
     rm -f /usr/share/vulkan/icd.d/lvp_icd.*.json && \
     mkdir -p "/usr/etc/profile.d/" && \
     ln -s "/usr/share/ublue-os/firstboot/launcher/login-profile.sh" \

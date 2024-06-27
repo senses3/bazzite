@@ -4,7 +4,7 @@
 
 [![build-bazzite](https://github.com/ublue-os/bazzite/actions/workflows/build.yml/badge.svg)](https://github.com/ublue-os/bazzite/actions/workflows/build.yml) [![build-bazzite-isos](https://github.com/ublue-os/bazzite/actions/workflows/build_iso.yml/badge.svg)](https://github.com/ublue-os/bazzite/actions/workflows/build_iso.yml)
 
-# [🇺🇸](https://github.com/ublue-os/bazzite/blob/main/README.md) [🇪🇸](https://github.com/ublue-os/bazzite/blob/main/README-SPA.md) [🇮🇩](https://github.com/ublue-os/bazzite/blob/main/README-ID.md) [:cn:](https://github.com/ublue-os/bazzite/blob/main/README-zh-cn.md) [🇫🇷](https://github.com/ublue-os/bazzite/blob/main/README-FR.md) [🇧🇷](https://github.com/ublue-os/bazzite/blob/main/README-BR.md)
+# [🇺🇸](https://github.com/ublue-os/bazzite/blob/main/README.md) [🇪🇸](https://github.com/ublue-os/bazzite/blob/main/README-SPA.md) [🇮🇩](https://github.com/ublue-os/bazzite/blob/main/README-ID.md) [🇨🇳](https://github.com/ublue-os/bazzite/blob/main/README-zh-cn.md) [🇫🇷](https://github.com/ublue-os/bazzite/blob/main/README-FR.md) [🇧🇷](https://github.com/ublue-os/bazzite/blob/main/README-BR.md) [🇳🇱](https://github.com/ublue-os/bazzite/blob/main/README-NL.md)
 
 <p align="center">
   <a href="https://download.bazzite.gg/"><img src="/repo_content/download.png?raw=true" alt="Download Bazzite"/></a>
@@ -37,7 +37,7 @@
 
 ## About & Features
 
-[Please see our website](https://bazzite.gg/) for a newcomer-friendly explaination of Bazzite. This readme will cover everything in-depth.
+[Please see our website](https://bazzite.gg/) for a newcomer-friendly explanation of Bazzite. This readme will cover everything in-depth.
 
 [Bazzite](https://bazzite.gg/) is an OCI image that serves as an alternative operating system for the [Steam Deck](https://www.steamdeck.com/), and a ready-to-game SteamOS-like for desktop computers and living room home theater PCs.
 
@@ -83,7 +83,7 @@ Common variant available as `bazzite`, suitable for desktop computers.
 - Automatic updates for the OS, Flatpaks, and all Distrobox containers - powered by [ublue-update](https://github.com/ublue-os/ublue-update) and [topgrade](https://github.com/topgrade-rs/topgrade).
 
 > [!IMPORTANT]  
-> **ISOs can be downloaded from our [releases page](https://github.com/ublue-os/bazzite/releases), and a helpful install guide can be found [here](https://universal-blue.discourse.group/docs?topic=30).**
+> **ISOs can be downloaded from our [website](https://download.bazzite.gg), and a helpful install guide can be found [here](https://universal-blue.discourse.group/docs?topic=30).**
 
 Rebase from an existing upstream Fedora Atomic to this image if you want **Open Source GPU Drivers**:
 (Please note: Mesa's Open Source option for NVIDIA GPUs, NVK is still prone to errors at the time of writing, for any issues relating to NVK [please submit a report with Mesa]([url](https://docs.mesa3d.org/bugs.html)), not Ublue/Bazzite)
@@ -139,7 +139,7 @@ Variant designed for usage as an alternative to SteamOS on the Steam Deck, and f
 > **Due to an upstream bug, Bazzite cannot be used on Steam Decks with 64GB eMMC storage at this time. Upgrading the storage resolves the issue.**
 
 > [!IMPORTANT]  
-> **ISOs can be downloaded from our [releases page](https://github.com/ublue-os/bazzite/releases), and a helpful install guide can be found [here](https://universal-blue.discourse.group/docs?topic=30).**
+> **ISOs can be downloaded from our [website](https://download.bazzite.gg), and a helpful install guide can be found [here](https://universal-blue.discourse.group/docs?topic=30).**
 
 Rebase from an existing upstream Fedora Atomic to this image:
 
@@ -186,7 +186,7 @@ Builds with the GNOME desktop environment are available in both desktop and deck
 - Automatic updates for the [Firefox GNOME theme](https://github.com/rafaelmardojai/firefox-gnome-theme) and [Thunderbird GNOME theme](https://github.com/rafaelmardojai/thunderbird-gnome-theme). <sup><sub>(If installed)</sub></sup>
 
 > [!IMPORTANT]  
-> **ISOs can be downloaded from our [releases page](https://github.com/ublue-os/bazzite/releases), and a helpful install guide can be found [here](https://universal-blue.discourse.group/docs?topic=30).**
+> **ISOs can be downloaded from our [website](https://download.bazzite.gg), and a helpful install guide can be found [here](https://universal-blue.discourse.group/docs?topic=30).**
 
 Rebase from an existing upstream Fedora Atomic to this image:
 
@@ -194,7 +194,7 @@ Rebase from an existing upstream Fedora Atomic to this image:
 rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/bazzite-gnome:stable
 ```
 
-To rebase an existing ostree system to a Desktop Enviornment with the **Proprietary NVIDIA Drivers** release:
+To rebase an existing ostree system to a Desktop Environment with the **Proprietary NVIDIA Drivers** release:
 
 ```bash
 rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/bazzite-gnome-nvidia:stable
@@ -238,7 +238,7 @@ Despite this project also being image-based, you are able to install any Fedora 
 
 Bazzite ships with the latest Linux kernel and SELinux enabled by default with full support for secure boot <sub><sup>(Run `ujust enroll-secure-boot-key` and enter the password `ublue-os` if prompted to enroll our key)</sup></sub> and disk encryption, making this a sensible solution for general computing. <sup><sub>(Yes, you can print from Bazzite)</sub></sup>
 
-Read the [FAQ](https://universal-blue.discourse.group/docs?topic=33) for details on what makes Bazzite stand out from other Linux operating systems.
+Read the [FAQ](https://universal-blue.discourse.group/docs?topic=33) for details on what makes Bazzite stand out from other Linux based operating systems.
 
 ## Showcase
 
